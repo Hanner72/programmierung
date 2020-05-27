@@ -217,6 +217,11 @@
 
 ## 06 - TILES - der Metro Style
 
+!!! danger ""
+    Startet immer von der Linken Seite und dann von oben nach unten
+
+!!! warning ""
+    Is tricky !!!
 
 [^Top](#Bulma)
 

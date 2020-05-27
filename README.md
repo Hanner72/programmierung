@@ -2,7 +2,7 @@
 
 [[TOC]]
 
-# Plugins für README Erstellung
+# Plugins für Visual Studio Code zur README Erstellung und Darstellung
 
 * Auto-Open Markdown Preview
 * Markdown Shortcuts

@@ -106,15 +106,18 @@
 </section>
 ```
 
-[^Top](#Bulma
+[^Top](#Bulma)
 
 ## 04 - COLUMNS - sind Spalten
 
-!!! danger ""
+!!! warning Achtung
     Framework hat ist ein **12 Spalten** System !
 
+!!! info 
+    Bei gap Angaben muss `is-variable is-4` angegeben werden !!! `is-3` ist Standard und muss nicht angegeben werden.
+
 ```html
-<div class="columns">
+<div class="columns is-variable is-3">
   <div class="column">
     <p class="notification is-danger">
       Column One

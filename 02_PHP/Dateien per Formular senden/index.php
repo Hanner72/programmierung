@@ -11,7 +11,12 @@
 
     $uploaddir = "uploads";
     $uploaddatei = $_FILES['datei']['tmp_name'];
-    $dateimime = mime_content_type($uploaddatei);
+
+    //$dateimime = mime_content_type($uploaddatei);   //Hat bei XAMPP funktioniert
+    $finfo = new finfo(FILEINFO_MIME_TYPE);           // statt obere Zeile
+    $dateimime  = $finfo->file($uploaddatei);         // statt obere Zeile
+
+    echo $dateimime."<br>";
 
     $kst = $_POST['kst'];
     $bvh = $_POST['bvh'];

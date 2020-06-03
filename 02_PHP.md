@@ -12,3 +12,85 @@
     echo '<pre>$_FILES = '.print_r($_FILES,1).'</pre>';
     ```
 
+## In Logfile schreiben
+
+### Logfile Datei
+
+```php
+<?php
+$logdatei=fopen("logs/logfile.txt","a");
+fputs($logdatei,
+    date("d.m.Y, H:i:s",time()) .
+    ", " . $_SERVER['REMOTE_ADDR'] .
+    ", " . $_SERVER['REQUEST_METHOD'] .
+    ", " . $_SERVER['PHP_SELF'] .
+    ", " . $_SERVER['HTTP_USER_AGENT'] .
+    ", " . $_SERVER['HTTP_REFERER'] ."\n"
+    );
+fclose($logdatei);
+?>
+```
+
+Script direkt in Seite einbauen oder per include einbinden mit
+
+```php
+<?php
+include("logfile.php");
+?>
+```
+[^Top](#PHP)
+
+### An den Anfang einer Datei schreiben
+
+1.  Datei angeben<br>
+    ```$logdatei = "datei_log.txt";```
+2.  Datei zum schreiben öffnen<br>
+    ```$loghandle=fopen($logdatei,"r+");```
+3.  bestehendes Logfile einlesen<br>
+    ```$logtext = file_get_contents($logdatei);```
+4.  Loginhalt in Variable schreiben<br>
+    ```$loginhalt = $jetzt . " - Datei erfolgreich upgeloadet!\n" . $logtext;```
+5.  in Logdatei schreiben<br>
+    ```fwrite ($loghandle, $loginhalt);```
+6.  Logdatei schließen<br>
+    ```fclose ($loghandle);```
+
+[^Top](#PHP)
+
+## Zeit und Datum
+
+### Zeitzone überprüfen
+
+```php
+<?php
+date_default_timezone_set('America/Los_Angeles');
+
+$script_tz = date_default_timezone_get();
+
+if (strcmp($script_tz, ini_get('date.timezone'))){
+    echo 'Die Script-Zeitzone unterscheidet sich von der ini-set Zeitzone.';
+} else {
+    echo 'Die Script-Zeitzone und die ini-set Zeitzone stimmen überein.';
+}
+?>
+```
+
+## #div mit submit Button einblenden
+
+In den einzublenden #DIV Container folgendes eintragen:
+
+```html
+<div class="container" id="divnotification" style="display: none">
+    <div class="notification is-success">
+        <button class="delete"></button>
+        Datei(en) werden hochgeladen...
+    </div>
+</div>
+```
+danach in den input Button ein onclick Event einbauen mit der ID
+
+```html
+<form action="index.html" method="post">
+<input type="submit" value="Reset" name="reset" 
+    onclick="document.getElementById('divnotification').style.display = '';">
+```

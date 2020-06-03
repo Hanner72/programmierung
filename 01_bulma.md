@@ -4,19 +4,23 @@
 
 ## Hilfeseiten
 
-| Nr | Bereich     | Link                                                            |
-| -- | ----------- | --------------------------------------------------------------- |
-| 1  | Sart        | https://bulma.io/documentation/overview/start/#starter-template |
-| 2  | hero:       | https://bulma.io/documentation/layout/hero/                     |
-| 3  | section:    | https://bulma.io/documentation/layout/section/                  |
-| 4  | columns:    | https://bulma.io/documentation/columns/basics/                  |
-| 5  | level:      | https://bulma.io/documentation/layout/level/                    |
-| 6  | Tiles       | https://bulma.io/documentation/layout/tiles/                    |
-| 7  | image:      | https://bulma.io/documentation/elements/image/                  |
-| 8  | media:      | https://bulma.io/documentation/layout/media-object/             |
-| 9  | icon:       | https://bulma.io/documentation/elements/icon/                   |
-| 10 | breadcrumb: | https://bulma.io/documentation/components/breadcrumb/           |
-| 11 | Footer:     | https://bulma.io/documentation/layout/footer/                   |
+| Nr | Bereich          | Link                                                            |
+| -- | ---------------- | --------------------------------------------------------------- |
+| 1  | Sart             | https://bulma.io/documentation/overview/start/#starter-template |
+| 2  | hero:            | https://bulma.io/documentation/layout/hero/                     |
+| 3  | section:         | https://bulma.io/documentation/layout/section/                  |
+| 4  | columns:         | https://bulma.io/documentation/columns/basics/                  |
+| 5  | level:           | https://bulma.io/documentation/layout/level/                    |
+| 6  | Tiles            | https://bulma.io/documentation/layout/tiles/                    |
+| 7  | image:           | https://bulma.io/documentation/elements/image/                  |
+| 8  | media:           | https://bulma.io/documentation/layout/media-object/             |
+| 9  | icon:            | https://bulma.io/documentation/elements/icon/                   |
+| 10 | Form:            | https://bulma.io/documentation/form/general/                    |
+| 11 | breadcrumb:      | https://bulma.io/documentation/components/breadcrumb/           |
+| 12 | Footer:          | https://bulma.io/documentation/layout/footer/                   |
+|    |                  |                                                                 |
+| 40 | Bulma Extensions | https://wikiki.github.io/                                       |
+| 50 | Formbuilder:     | https://jesobreira.github.io/Bulma-Form-Builder/                |
 
 [^Top](#Bulma)
 
@@ -227,7 +231,36 @@
 
 [^Top](#Bulma)
 
-## 10 - Ende der Seite mit -> FOOTER
+## 10 - Form
+
+!!! warning ""
+    Bei Datei Upload muss ein Script zur Dateiüberprüfung und zum eintragen des Dateinamens in das Formular eingefügt werden
+
+!!! info ""
+    `this.files[0].name` kann auch durch einen statischen Text ausgetauscht werden. z.B. `'1 Datei ausgewählt!'`. <br>
+    ACHTUNG! Einfache Anführungszeichen nicht vergessen!
+
+```html
+<label class="label" for="datei1">Datei 1</label>
+<div class="file">
+  <label class="file-label">
+    <input class="file-input" type="file" name="datei1"
+      onchange="if (this.files.length > 0) document.getElementById('filename-filebutton-1').innerHTML = this.files[0].name;">
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fa fa-upload"></i>
+      </span>
+      <span class="file-label" id="filename-filebutton-1">
+        Choose a file…
+      </span>
+    </span>
+  </label>
+</div>
+```
+
+[^Top](#Bulma)
+
+## 12 - Ende der Seite mit -> FOOTER
 
 ```html
 <footer class="footer">

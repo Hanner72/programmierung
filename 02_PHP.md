@@ -4,12 +4,19 @@
 
 
 
-## Dateien per Formular senden
+## Gesendete Daten überprüfen
 
 !!! info
     ```php
     // Information zu hochgeladenen Dateien
     echo '<pre>$_FILES = '.print_r($_FILES,1).'</pre>';
+    ```
+
+!!! info
+    ```php
+    echo '<pre>';
+    print_r( $_GET );
+    echo '</pre>';
     ```
 
 ## In Logfile schreiben

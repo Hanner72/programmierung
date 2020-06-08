@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="datetimepicker/jquery.datetimepicker.css"/ >
+    <script src="datetimepicker/jquery.js"></script>
+    <script src="datetimepicker/build/jquery.datetimepicker.full.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <h1>JQuery DateTime Picker</h1>
+    <br><br>
+    Download und Info:<br>
+    <a href="https://xdsoft.net/jqplugins/datetimepicker/">https://xdsoft.net/jqplugins/datetimepicker/</a><br>
+    <br>
+    <br>
+    <input id="datetimepicker" type="text" placeholder="Datum und Uhrzeit">
+    <br>
+    <br>
+    <h1>datetime-local</h1>
+    <br><br>
+    Download und Info:<br>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local">https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/datetime-local</a><br>
+    <br>
+    <br>
+    <input type="datetime-local" id="birthdaytime" name="birthdaytime"> ohne Plugin
+    <br><br>
+
+    <script>
+        $('#datetimepicker').datetimepicker({
+            format: 'd.m.Y, H:i',
+            lang: 'de', 
+            step: 15,
+            weeks: true,
+            dayOfWeekStart: 1,
+        });
+        </script>
+
+</body>
+</html>

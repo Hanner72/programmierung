@@ -1,0 +1,69 @@
+// ////////////////////////////////////////////////////////////////////////// //
+//                                                                            //
+// Unzip Script                                                               //
+// PHP-Script zum komfortablen Entpacken von ZIP-Archiven auf dem Server      //
+//                                                                            //
+// (c) Gerhard Kerner                                                         //
+// technikblog.gerhard-kerner.at                                              //
+// Version 1.3, Juni 2018                                                     //
+//                                                                            //
+// GNU General Public License:                                                //
+//                                                                            //
+// Dieses Script ist Freie Software: Sie können es unter den Bedingungen      //
+// der GNU General Public License, wie von der Free Software Foundation,      //
+// Version 3 der Lizenz oder (nach Ihrer Option) jeder späteren               //
+// veröffentlichten Version, weiterverbreiten und/oder modifizieren.          //
+//                                                                            //
+// Dieses Script wird in der Hoffnung, dass es nützlich sein wird, aber       //
+// OHNE JEDE GEWÄHRLEISTUNG, bereitgestellt; sogar ohne die implizite         //
+// Gewährleistung der MARKTFÄHIGKEIT oder EIGNUNG FÜR EINEN BESTIMMTEN ZWECK. //
+// Für weitere Details siehe: http://www.gnu.org/licenses/                    //
+//                                                                            //
+// ////////////////////////////////////////////////////////////////////////// //
+
+
+Kurzanleitung:
+--------------
+
+Systemvoraussetzungen:
+   Ab PHP 5.2.0, PHP 7
+   Das PHP-Modul "zip" muss am Server installiert und aktiviert sein.
+
+Anwendung: Einfach das Unzip Script nach Bedarf konfigurieren, in dasselbe
+Verzeichnis wie das zu entpackende ZIP-Archiv laden und im Browser aufrufen.
+
+Das ZIP-Archiv wird automatisch ermittelt und vor dem Entpacken angezeigt.
+Sind mehrere ZIP-Archive vorhanden, wird das alphabetisch letztgereihte
+Archiv ausgewählt. Alternativ dazu kann auch ein ZIP-Archiv manuell
+festgelegt werden. Der Entpack-Vorgang startet mit Klick auf den Button
+"ZIP-Archiv in das Zielverzeichnis entpacken".
+                                                                           
+Im Konfigurationsbereich können folgende Variablen festgelegt werden:
+
+   $zielverzeichnis  = Name des Zielverzeichnisses (Standard: './')
+   $quelldatei_manuell = Name des ZIP-Archivs manuell festlegen (Optional)
+
+ACHTUNG, BITTE BEACHTEN: Eventuell bereits vorhandene Dateien im Ziel-
+verzeichnis werden OHNE RÜCKFRAGE überschrieben!
+
+Nach der Anwendung sollte das Unzip Script oder das ZIP-Archiv vom Server
+gelöscht werden, um einen irrtümlichen neuerlichen Aufruf und somit eventuellen
+Datenverlust zu vermeiden.
+
+SCRIPT TESTEN:
+--------------
+Vor dem ersten Einsatz kann das Script mittels des beiliegenden Test-ZIP-Archivs
+auf eine korrekte Konfiguration geprüft werden. Dazu einfach das Script zusammen
+mit der Datei Test.zip in das gewünschte Verzeichnis laden und ausführen. Nach dem
+Entpackvorgang sollte die Datei unzip-ok.txt in dem, von Ihnen im Konfigurations-
+bereich festgelegten, Zielverzeichnis vorhanden sein. Bitte beachten Sie, dass für
+die Wahl des Zielverzeichnisses die Ordner- und Dateistruktur des zu entpackenden
+ZIP-Archivs entscheidend ist.
+
+HINWEIS:
+--------
+Das Script wurde ausführlich getestet und beruht auf PHP-Standard-Funktionen.
+Dennoch kann ich keine Garantie oder Haftung für eine korrekte Funktion oder
+für einen eventuellen Datenverlust durch die Nutzung dieses Scripts übernehmen.
+Ich empfehle, das Script vor dem Live-Einsatz in einer Testumgebung oder mittels
+des beiliegenden Test-ZIP-Archivs auf eine fehlerfreie Konfiguration zu prüfen.

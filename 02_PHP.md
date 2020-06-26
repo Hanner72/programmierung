@@ -64,6 +64,30 @@ include("logfile.php");
 
 [^Top](#PHP)
 
+## LOG auslesen und/oder Zeilen löschen
+
+```php
+<?php
+$lines = file("upload.log");            # Datei Zeilenweise einlesen
+
+$array_length = count($lines);          # Zeilen 1-20 anzeigen
+for ($i = 0; $i < 20; ++$i) {
+    echo $lines[$i];
+    echo '<br>';
+}
+
+for ($j = 50; $j < 100; ++$j) {
+unset( $lines[$j] );                      # Zeilen 11-50 löschen
+}
+
+//$lines = implode("\n", $lines);         # Text wieder zusammenfügen wahlweise mit Umbruch
+file_put_contents("upload.log", $lines);  # Text wieder in die Datei schreiben
+
+?>
+```
+
+[^Top](#PHP)
+
 ## Zeit und Datum
 
 ### Zeitzone überprüfen

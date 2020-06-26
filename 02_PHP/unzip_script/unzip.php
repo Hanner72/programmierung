@@ -91,6 +91,21 @@ if(isset($_POST["entpacken"])) {
 }
 ?>
 
+<!-- Nachsehen ob Dateien im Ordner -->
+<?php
+$path = "Testordner/";
+$filesFound = 0;
+if (is_dir($path) && $pp = opendir($path)) { 
+  while (($file = readdir($pp)) !== false) {
+    if ($file != "." && $file != "..") {
+      $filesFound++;
+    }
+  }
+  closedir($pp);
+}
+print "$filesFound Dateien in Ordner $path";
+?>
+
 <!DOCTYPE html>
 <html lang="de">
 

@@ -2,7 +2,35 @@
 
 [[TOC]]
 
+## Prüfen ob URL erreichbar ist
 
+!!! info
+    ```php
+    // Prüft ob bestimmte URL existiert und erreichbar ist
+
+    // URL oder Ressource definieren
+    $seturl = 'http://fotos.strabag-sport.at/lieferschein_pdf/';
+
+    //Funktion URL Check
+    function url_check($url) {
+        $urlheaders = @get_headers($url);
+        return is_array($urlheaders) ? preg_match('/^HTTP\\/\\d+\\.\\d+\\s+2\\d\\d\\s+.*$/',$urlheaders[0]) : false;
+    };
+
+    //URL prüfen
+    if(url_check($seturl)){
+        //URL existiert, Hinweis ausgeben
+        echo 'Die URL '.$seturl.' ist erreichbar!';
+    } else {
+        //URL existiert NICHT, Hinweis ausgeben und E-Mail senden
+        //echo 'Die URL '.$seturl.' ist NICHT erreichbar! Eine E-Mail wurde an die angegebene Adresse gesendet.';
+        $logdatei=fopen($logfile,"r+");
+        $logtext = file_get_contents($logfile);
+        $loginhalt = "<font color='green'>" . $jetzt . " - Datei: " . $dateiname1 . " - erfolgreich upgeloadet!</font>\n" . $logtext;
+        fwrite ($logdatei, $loginhalt);
+        fclose ($logdatei);
+    }
+    ```
 
 ## Gesendete Daten überprüfen
 
@@ -122,6 +150,6 @@ danach in den input Button ein onclick Event einbauen mit der ID
 
 ```html
 <form action="index.html" method="post">
-<input type="submit" value="Reset" name="reset" 
+<input type="submit" value="Reset" name="reset"
     onclick="document.getElementById('divnotification').style.display = '';">
 ```

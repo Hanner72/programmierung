@@ -1,6 +1,47 @@
-# Bootstrap
 
 [[TOC]]
+
+# Bootstrap v5
+
+## Hilfeseiten
+
+| Nr | Bereich  | Link                                                               |
+| -- | -------- | ------------------------------------------------------------------ |
+| 1  | Homepage | https://v5.getbootstrap.com/                                       |
+| 2  | Docs     | https://v5.getbootstrap.com/docs/5.0/getting-started/introduction/ |
+
+## Starter Template
+
+Download
+https://v5.getbootstrap.com/docs/5.0/getting-started/download/
+
+```html
+<!doctype html>
+<html lang="de">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <!-- Bootstrap Bundle enthält Popper.js -->
+    <script src="js/bootstrap.bundle.js"></script>
+  </body>
+</html>
+```
+
+[^Top](#Bootstrapv5)
+
+# Bootstrap v4
+
+
 
 ## Hilfeseiten
 
@@ -23,3 +64,5 @@
 ```html
 <i class="fa fa-home"></i>
 ```
+
+[^Top](#Bootstrapv5)

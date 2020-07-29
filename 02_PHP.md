@@ -153,3 +153,35 @@ danach in den input Button ein onclick Event einbauen mit der ID
 <input type="submit" value="Reset" name="reset"
     onclick="document.getElementById('divnotification').style.display = '';">
 ```
+
+# PHP und MYSQL
+## Verbindung mit MYSQL
+
+```php
+<?php
+// die Konstanten auslagern in eigene Datei
+// die dann per require_once ('config.php'); 
+// geladen wird.
+
+// Damit alle Fehler angezeigt werden
+error_reporting(E_ALL);
+
+// Zum Aufbau der Verbindung zur Datenbank
+// die Daten erhalten Sie von Ihrem Provider
+define ( 'MYSQL_HOST',         'localhost'    );
+define ( 'MYSQL_BENUTZER',     'root'         );
+define ( 'MYSQL_KENNWORT',     ''             );
+define ( 'MYSQL_DATENBANK',    'kassabuch'   );
+
+// AB HIER NICHTS MEHR ÄNDERN
+$dbconn = mysqli_connect (MYSQL_HOST, MYSQL_BENUTZER, MYSQL_KENNWORT, MYSQL_DATENBANK);
+mysqli_set_charset($dbconn, 'utf8');
+
+if (mysqli_connect_errno($dbconn)) {
+  echo ("Probleme mit der Verbindung: " . mysqli_connect_error());
+}
+// Arbeiten auf der Datenbank
+
+// Ende der Arbeiten auf der Datenbank und Schließen der Connection
+mysqli_close($dbconn);
+```

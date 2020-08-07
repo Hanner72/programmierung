@@ -1,4 +1,4 @@
-<?php 
+<?php
 // ////////////////////////////////////////////////////////////////////////// //
 //                                                                            //
 // Unzip Script                                                               //
@@ -57,33 +57,32 @@ $ergebnis = 'Noch nicht ausgeführt';
 
 // ZIP-Archiv ermitteln
 $dateien = scandir($quellverzeichnis, 0);
-  foreach ($dateien as $datei)
-    {
-    $fileinfos = pathinfo($quellverzeichnis."/".$datei);
+foreach ($dateien as $datei) {
+    $fileinfos = pathinfo($quellverzeichnis . "/" . $datei);
 
-    if ($datei != "." && $datei != ".." && $fileinfos['basename'])
-    {
-    $dateitypen= array("$extension");
-    if(in_array($fileinfos['extension'],$dateitypen))
-    {
-  unset($datei);
+    if ($datei != "." && $datei != ".." && $fileinfos['basename']) {
+        $dateitypen = array("$extension");
+        if (in_array($fileinfos['extension'], $dateitypen)) {
+            unset($datei);
 
-  $quelldatei_aktuellste = $fileinfos['filename'] . ".zip";
+            $quelldatei_aktuellste = $fileinfos['filename'] . ".zip";
 
-    if(empty($quelldatei_manuell)){$quelldatei = $quelldatei_aktuellste;}
-    else{$quelldatei = $quelldatei_manuell;}
+            if (empty($quelldatei_manuell)) {$quelldatei = $quelldatei_aktuellste;} else { $quelldatei = $quelldatei_manuell;}
 
-    };
-  };
-};
+        }
+        ;
+    }
+    ;
+}
+;
 
 // ZIP-Archiv entpacken
-if(isset($_POST["entpacken"])) {
-  $zip = new ZipArchive;
-  $res = $zip->open($quelldatei);
-    if ($res === TRUE) {
-      $zip->extractTo($zielverzeichnis);
-      $zip->close();
+if (isset($_POST["entpacken"])) {
+    $zip = new ZipArchive;
+    $res = $zip->open($quelldatei);
+    if ($res === true) {
+        $zip->extractTo($zielverzeichnis);
+        $zip->close();
         $ergebnis = $ausgabe_ok;
     } else {
         $ergebnis = $ausgabe_fehler;
@@ -95,13 +94,13 @@ if(isset($_POST["entpacken"])) {
 <?php
 $path = "Testordner/";
 $filesFound = 0;
-if (is_dir($path) && $pp = opendir($path)) { 
-  while (($file = readdir($pp)) !== false) {
-    if ($file != "." && $file != "..") {
-      $filesFound++;
+if (is_dir($path) && $pp = opendir($path)) {
+    while (($file = readdir($pp)) !== false) {
+        if ($file != "." && $file != "..") {
+            $filesFound++;
+        }
     }
-  }
-  closedir($pp);
+    closedir($pp);
 }
 print "$filesFound Dateien in Ordner $path";
 ?>

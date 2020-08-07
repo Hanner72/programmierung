@@ -1,3 +1,4 @@
+# BOOTSTRAP
 
 [[TOC]]
 
@@ -65,4 +66,68 @@ https://v5.getbootstrap.com/docs/5.0/getting-started/download/
 <i class="fa fa-home"></i>
 ```
 
-[^Top](#Bootstrapv5)
+[^Top](#Bootstrap)
+
+## Ausrichtungen
+
+https://getbootstrap.com/docs/4.5/layout/grid/#alignment
+
+### Vertikal
+
+```html
+<div class="container">
+  <div class="row align-items-start">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+  <div class="row align-items-center">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+  <div class="row align-items-end">
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+    <div class="col">
+      One of three columns
+    </div>
+  </div>
+</div>
+```
+
+### Horizontal
+
+```html
+<div class="container">
+  <div class="row">
+    <div class="col align-self-start">
+      One of three columns
+    </div>
+    <div class="col align-self-center">
+      One of three columns
+    </div>
+    <div class="col align-self-end">
+      One of three columns
+    </div>
+  </div>
+</div>
+```
+
+[^Top](#Bootstrap)

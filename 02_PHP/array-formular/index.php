@@ -11,9 +11,12 @@
   <form action="insert.php" method="post">
     <input type="text" name="vname" value="Vorname"><br>
     <input type="text" name="nname" value="Nachname"><br>
-    <input type="text" name="Text[]" value="Text"><br>
-    <input type="text" name="Text[]" value="Text"><br>
-    <input type="text" name="Text[]" value="Text"><br>
+    <input type="position" name="position[]" value="position"><br>
+    <input type="position" name="position[]" value="position"><br>
+    <input type="position" name="position[]" value="position"><br>
+    <input type="text" name="text[]" value="text"><br>
+    <input type="text" name="text[]" value="text"><br>
+    <input type="text" name="text[]" value="text"><br>
     <input type="submit" value="senden">
   </form>
 

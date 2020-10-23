@@ -2,9 +2,6 @@
 
 include dirname(__FILE__) . '/../ASEngine/AS.php';
 
-//$pfad = dirname(__FILE__) . '/../ASEngine/AS.php';
-//echo $pfad;
-
 if (! app('login')->isLoggedIn()) {
     redirect("login.php");
 }

@@ -31,6 +31,90 @@
         fclose ($logdatei);
     }
     ```
+[^Top](#PHP)
+
+## Pfade auslesen
+
+```php
+<?php
+    echo "SERVER_NAME: ".$_SERVER['SERVER_NAME']."<br>";
+    echo "SERVER_ADDR: ".$_SERVER['SERVER_ADDR']."<br>";
+    echo "DOCUMENT_ROOT: ".$_SERVER['DOCUMENT_ROOT']."<br>";
+    echo "HTTP_HOST: ".$_SERVER['HTTP_HOST']."<br>";
+    echo "REMOTE_ADDR: ".$_SERVER['REMOTE_ADDR']."<br>";
+    echo "REQUEST_URI: ".$_SERVER['REQUEST_URI']."<br>";
+    echo "/".trim(str_replace(str_replace("\\", "/", $_SERVER["DOCUMENT_ROOT"]), '', str_replace("\\", "/", dirname(__FILE__))), "/<br>");
+?>
+```
+[^Top](#PHP)
+
+## HOST auslesen für jedes System in PHP
+
+```php
+<?php
+    $conflen=strlen('SCRIPT');
+    $B=substr(__FILE__,0,strrpos(__FILE__,'/'));
+    $A=substr($_SERVER['DOCUMENT_ROOT'], strrpos($_SERVER['DOCUMENT_ROOT'], $_SERVER['PHP_SELF']));
+    $C=substr($B,strlen($A));
+    $posconf=strlen($C)-$conflen-1;
+    $D=substr($C,1,$posconf);
+    $host='http://'.$_SERVER['SERVER_NAME'].'/'.$D;
+    echo $host; // Hier wird der HOST ausgegeben
+?>
+```
+
+## Absolute Pfade für Include Dateien setzen
+
+```php
+$verzeichnisInclude = dirname(__FILE__) . "/"; // in der config.php festlegen
+// Hier wird der Pfad zur config.php gesetzt
+
+//die weiteren Dateien können nun in jeder Datei eingebunden werden und die Variable verlinkt immer auf den richtigen Pfad
+include_once($verzeichnisInclude . "lang_main.php");
+include_once($verzeichnisInclude . "bl_config.php");
+```
+!!!Warning
+    Die config.php muss immer mit relativen Pfaden eingebunden werden.
+
+[^Top](#PHP)
+
+## header setzen
+
+```php
+$host  = $_SERVER['HTTP_HOST'];
+$uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+$extra = 'index.php#admins';
+header("Location: http://$host$uri/$extra");
+```
+
+## Prüfen ob $_GET oder $_POST gesetzt wurde
+
+!!!Info
+    **$_GET**
+
+    wird per Link gesetzt, z.B:
+    
+    dannerbam.eu/link?gr=test
+
+    **$_POST** 
+
+    wird per Formular gesendet!
+
+
+  ```php
+  if(!isset($_GET['gr']) || ($_GET['gr']==="")){
+      $gruppe = "";	
+  }else{
+      $gruppe = $_GET['gr'];
+  }
+
+  if ($gruppe != ""){
+      echo "Gruppe ist gesetzt";
+  }else{
+      echo "Gruppe nicht gesetzt";
+  }
+  ```
+[^Top](#PHP)
 
 ## Gesendete Daten überprüfen
 
@@ -42,10 +126,32 @@
 
 !!! info
     ```php
+    //Informationen zu $_GET oder $_POST Variablen
     echo '<pre>';
     print_r( $_GET );
     echo '</pre>';
     ```
+
+!!!Info
+    ```php
+    //Informationen zu $_SESSION
+    echo "<pre>";
+    print_r($_SESSION);
+    echo "</pre>";
+    ```
+
+[^Top](#PHP)
+
+## Dateien in Ordner zählen
+
+```php
+$path = "files" . "/"  . $kapitel . "/"  . $file . "/files";
+$files = scandir($path);
+$files_count = count($files)-2; // Minus zwei wegen "." und ".."
+echo "$files_count Dateien in Ordner $path";
+```
+
+[^Top](#PHP)
 
 ## In Logfile schreiben
 
@@ -122,7 +228,7 @@ file_put_contents("upload.log", $lines);  # Text wieder in die Datei schreiben
 
 ```php
 <?php
-date_default_timezone_set('America/Los_Angeles');
+date_default_timezone_set('Europe/Vienna');
 
 $script_tz = date_default_timezone_get();
 
@@ -133,6 +239,7 @@ if (strcmp($script_tz, ini_get('date.timezone'))){
 }
 ?>
 ```
+[^Top](#PHP)
 
 ## #div mit submit Button einblenden
 
@@ -153,6 +260,85 @@ danach in den input Button ein onclick Event einbauen mit der ID
 <input type="submit" value="Reset" name="reset"
     onclick="document.getElementById('divnotification').style.display = '';">
 ```
+[^Top](#PHP)
+
+## Daten ver- und entschlüsseln
+
+http://www.rither.de/a/informatik/php-beispiele/strings/strings-verschluesseln-und-entschluesseln/
+
+```php
+<?php
+    function encodeRand($str, $seed=1234567) {
+        mt_srand($seed);
+        $out = array();
+        for ($x=0, $l=strlen($str); $x<$l; $x++) {
+            $out[$x] = (ord($str[$x]) * 3) + mt_rand(350, 16000);
+        }
+         
+        mt_srand();
+        return implode('-', $out);
+    }
+     
+    function decodeRand($str, $seed=1234567) {
+        mt_srand($seed);
+        $blocks = explode('-', $str);
+        $out = array();
+        foreach ($blocks as $block) {
+            $ord = (intval($block) - mt_rand(350, 16000)) / 3;
+            $out[] = chr($ord);
+        }
+         
+        mt_srand();
+        return implode('', $out);
+    }
+     
+    $seed = 1249135;
+     
+    echo "aaabbb:\n";
+    var_dump(encodeRand('aaabbb', $seed));
+    var_dump(decodeRand(encodeRand('aaabbb', $seed), $seed));
+     
+    echo "\n\n";
+    echo "Katze:\n";
+    var_dump(encodeRand('Katze', $seed));
+    var_dump(decodeRand(encodeRand('Katze', $seed), $seed));
+     
+    echo "\n\n";
+    echo "äöü:\n";
+    var_dump(encodeRand('äöü', $seed));
+    var_dump(decodeRand(encodeRand('äöü', $seed), $seed));
+     
+    echo "\n\n";
+    echo "αЊᴁ₳:\n";
+    var_dump(encodeRand('αЊᴁ₳', $seed));
+    var_dump(decodeRand(encodeRand('αЊᴁ₳', $seed), $seed));
+?>
+```
+
+Ausgabe:
+
+```html
+aaabbb:
+string(31) "16257-6533-8419-14647-6719-9202"
+string(6) "aaabbb"
+ 
+ 
+Katze:
+string(26) "16191-6533-8476-14719-6728"
+string(5) "Katze"
+ 
+ 
+äöü:
+string(31) "16551-6734-8713-14899-7010-9472"
+string(6) "äöü"
+ 
+ 
+αЊᴁ₳:
+string(51) "16584-6773-8752-14767-7100-9448-8752-1357-8724-7471"
+string(10) "αЊᴁ₳"
+```
+
+[^Top](#PHP)
 
 # PHP und MYSQL
 ## Verbindung mit MYSQL
@@ -185,3 +371,4 @@ if (mysqli_connect_errno($dbconn)) {
 // Ende der Arbeiten auf der Datenbank und Schließen der Connection
 mysqli_close($dbconn);
 ```
+[^Top](#PHP)

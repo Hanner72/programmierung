@@ -13,6 +13,7 @@ https://tcpdf.org/examples/
 ## Referenzliste und Befehlliste
 
 https://www.rubydoc.info/gems/rfpdf/1.17.4/TCPDF -> aktuall
+
 https://www.rubydoc.info/gems/rfpdf/1.17.1/TCPDF
 
 # Animate.css
@@ -32,3 +33,17 @@ https://animate.style/
 ```html
 <h1 class="animate__animated animate__bounce">An animated element</h1>
 ```
+
+# swift-mailer php mail library
+
+## Homepage
+
+https://swiftmailer.symfony.com
+
+## Doku
+
+https://swiftmailer.symfony.com/docs/introduction.html
+
+## Login Tutorial mit SwiftMailer
+
+https://youtu.be/C-ZSQMbsm7A?list=PL3pyLl-dgiqDt7xKIdvhoSKrR7KqIQ9PQ&t=238

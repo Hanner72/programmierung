@@ -14,14 +14,19 @@
 * Markdown Preview Prism Highlighting
 * HTML Preview (Shortcut = [[Strg]]+[[k]] -> [[v]])
 
+## Code schreiben
+
 ```php
-csy<c x cx< x>>
+<?php
+ echo "Das ist ein PHP Code";
+?>
+```
+
+```html
+<a href="test.html">Und das HTML</a>
 ```
 
 ## Markdown Extended
-
-!!! danger 
-    This is the danger admonition body
 
 !!! note 
     This is the danger admonition body

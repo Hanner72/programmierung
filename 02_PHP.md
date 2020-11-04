@@ -2,6 +2,8 @@
 
 [[TOC]]
 
+# URL UND PFADE
+ 
 ## Prüfen ob URL erreichbar ist
 
 !!! info
@@ -31,6 +33,7 @@
         fclose ($logdatei);
     }
     ```
+
 [^Top](#PHP)
 
 ## Pfade auslesen
@@ -86,6 +89,8 @@ $uri   = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 $extra = 'index.php#admins';
 header("Location: http://$host$uri/$extra");
 ```
+
+# DATEN ÜBERTRAGEN
 
 ## Prüfen ob $_GET oder $_POST gesetzt wurde
 
@@ -150,6 +155,72 @@ $files = scandir($path);
 $files_count = count($files)-2; // Minus zwei wegen "." und ".."
 echo "$files_count Dateien in Ordner $path";
 ```
+
+[^Top](#PHP)
+
+## Formulardaten mit Daten aus MySQL füllen
+
+```php
+// Per GET übergebene Daten prüfen
+if (isset($_GET['get_variable'])) {
+    // wenn gesetzt dann in Parameter schreiben
+    $get_variable = $_GET['get_variable'];
+}else{
+    // wenn nicht dann Weiterleitung
+    echo '<META HTTP-EQUIV="Refresh" Content="3; URL=user.php">';
+}
+```
+
+```php
+// Datenbank mit Daten für Formular auslesen
+$sql = "SELECT * FROM tabelle WHERE zeile_id=$get_variable";
+      $result = $DB->query($sql);
+      $e = function ($value) {
+        return htmlspecialchars($value, ENT_COMPAT, 'UTF-8');
+      };
+      $row = $result->fetch();
+
+      $sql_daten = $row['name'];
+?>
+```
+
+```html
+<label class="control-label">Rolle</label> 
+<select class="form-control" name="inputname">
+    <option value="">-</option>
+    <?php
+        $sql = "SELECT * FROM role"; // Daten von Tabelle role holen
+        foreach ($DB->query($sql) as $row) {
+            $option_ausgabe .= '<option value="' . $row1['role_rolecode'] .'" 
+            '. ($row['role_rolecode'] == $get_variable ? "selected=\"selected\"" : "") . ' 
+            >'.$row['role_rolename'] .'</option>'; // Inline if else innerhalb der klammern ()
+            }
+        echo $option_ausgabe;
+    ?>
+</select>
+```
+
+[^Top](#PHP)
+
+# ABFRAGEN
+
+## if/else innerhalb Echo benutzen
+
+if/else kann auch innerhalb von echo benutzt werden:
+
+Die if/else Abfrage steht in den Klammern!
+
+!!!Info
+    z.B: wenn User eingeloggt ( $user['is_logged_in'] ) dann ( ? ) sonst ( : )
+
+```php
+echo 'Welcome '.($user['is_logged_in'] ? $user['first_name'] : 'Guest').'!';
+```
+
+!!!help
+    // Beispiele
+
+    https://davidwalsh.name/php-ternary-examples
 
 [^Top](#PHP)
 
@@ -220,46 +291,6 @@ file_put_contents("upload.log", $lines);  # Text wieder in die Datei schreiben
 ?>
 ```
 
-[^Top](#PHP)
-
-## Zeit und Datum
-
-### Zeitzone überprüfen
-
-```php
-<?php
-date_default_timezone_set('Europe/Vienna');
-
-$script_tz = date_default_timezone_get();
-
-if (strcmp($script_tz, ini_get('date.timezone'))){
-    echo 'Die Script-Zeitzone unterscheidet sich von der ini-set Zeitzone.';
-} else {
-    echo 'Die Script-Zeitzone und die ini-set Zeitzone stimmen überein.';
-}
-?>
-```
-[^Top](#PHP)
-
-## #div mit submit Button einblenden
-
-In den einzublenden #DIV Container folgendes eintragen:
-
-```html
-<div class="container" id="divnotification" style="display: none">
-    <div class="notification is-success">
-        <button class="delete"></button>
-        Datei(en) werden hochgeladen...
-    </div>
-</div>
-```
-danach in den input Button ein onclick Event einbauen mit der ID
-
-```html
-<form action="index.html" method="post">
-<input type="submit" value="Reset" name="reset"
-    onclick="document.getElementById('divnotification').style.display = '';">
-```
 [^Top](#PHP)
 
 ## Daten ver- und entschlüsseln
@@ -340,7 +371,64 @@ string(10) "αЊᴁ₳"
 
 [^Top](#PHP)
 
+# ZEIT und DATUM
+
+## Zeitzone überprüfen
+
+```php
+<?php
+date_default_timezone_set('Europe/Vienna');
+
+$script_tz = date_default_timezone_get();
+
+if (strcmp($script_tz, ini_get('date.timezone'))){
+    echo 'Die Script-Zeitzone unterscheidet sich von der ini-set Zeitzone.';
+} else {
+    echo 'Die Script-Zeitzone und die ini-set Zeitzone stimmen überein.';
+}
+?>
+```
+[^Top](#PHP)
+
+# FORMATIERUNG
+
+## #div mit submit Button einblenden
+
+In den einzublenden #DIV Container folgendes eintragen:
+
+```html
+<div class="container" id="divnotification" style="display: none">
+    <div class="notification is-success">
+        <button class="delete"></button>
+        Datei(en) werden hochgeladen...
+    </div>
+</div>
+```
+danach in den input Button ein onclick Event einbauen mit der ID
+
+```html
+<form action="index.html" method="post">
+<input type="submit" value="Reset" name="reset"
+    onclick="document.getElementById('divnotification').style.display = '';">
+```
+
+[^Top](#PHP)
+
+# BILDER
+
+## Georeferenzierte Bilder in Openstreetmap anzeigen
+
+!!!warning die Links dazu
+    https://hapede.de/sites/homepage/html/karte.html - Tut mit Demo
+
+    https://gitlab.com/snippets/1661335 - csv.php Datei
+
+    https://github.com/dmpop/mejiro - Script
+
+[^Top](#PHP)
+
 # PHP und MYSQL
+
 ## Verbindung mit MYSQL
 
 ```php

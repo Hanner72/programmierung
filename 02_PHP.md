@@ -76,7 +76,7 @@ Wenn man z.B. einen Header oder Footer benutzt und in diese eine Config-Datei in
 
 !!!Info
     Kann unter 
-    http://127.0.0.1/programmierung/02_PHP/include_in_include_Pfad/unterordner/ 
+    http://127.0.0.1/programmierung/02_PHP/include_in_include_Pfad
     getestet werden.
 
 !!!Warning outdated

@@ -70,18 +70,32 @@
 ?>
 ```
 
-## Absolute Pfade für Include Dateien setzen
+## Absolute Pfade für includete Include Dateien setzen
 
-```php
-$verzeichnisInclude = dirname(__FILE__) . "/"; // in der config.php festlegen
-// Hier wird der Pfad zur config.php gesetzt
+Wenn man z.B. einen Header oder Footer benutzt und in diese eine Config-Datei includet, dann braucht man diese nicht mehr in die eigentliche Hauptdatei includen. Es genügt also in der Header Datei.
 
-//die weiteren Dateien können nun in jeder Datei eingebunden werden und die Variable verlinkt immer auf den richtigen Pfad
-include_once($verzeichnisInclude . "lang_main.php");
-include_once($verzeichnisInclude . "bl_config.php");
-```
+!!!Info
+    Kann unter 
+    http://127.0.0.1/programmierung/02_PHP/include_in_include_Pfad/unterordner/ 
+    getestet werden.
+
+!!!Warning outdated
+    ```php
+    $verzeichnisInclude = dirname(__FILE__) . "/"; // in der config.php festlegen
+    // Hier wird der Pfad zur config.php gesetzt
+
+    //die weiteren Dateien können nun in jeder Datei eingebunden werden und die Variable verlinkt immer auf den richtigen Pfad
+    include_once($verzeichnisInclude . "lang_main.php");
+    include_once($verzeichnisInclude . "bl_config.php");
+    ```
+
+!!!success aktuell
+    ```php
+    include __DIR__."/pfad/zur/datei.php";
+    ```
+
 !!!Warning
-    Die config.php muss immer mit relativen Pfaden eingebunden werden.
+    Die config.php muss bei include-Dateien (z.B. Header, Footer, etc.) immer mit relativen Pfaden eingebunden werden.
 
 [^Top](#PHP)
 

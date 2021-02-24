@@ -478,3 +478,57 @@ if (mysqli_connect_errno($dbconn)) {
 mysqli_close($dbconn);
 ```
 [^Top](#PHP)
+
+# PHP Libraries
+
+## Daten per Library ver- und entschlüsseln
+
+!!!warning Link zur PHP Library phpAES
+    http://www.phpaes.com/index.php#encrypt
+
+!!!Info Beispielcode
+    Beispiel auf der Library Seite
+
+[^Top](#PHP)
+
+## Bilder verändern, Wasserzeichen, Thumb
+
+!!!warning Link zur PHP Library ImageWorkshop
+    https://phpimageworkshop.com/tutorials.html
+
+!!!Info Beispielcode
+    Beispiel und Beschreibung auf der Library Seite
+
+[^Top](#PHP)
+
+## Bilder verändern, Wasserzeichen, Thumb
+
+!!!warning Link zur PHP Library phpThumb()
+    http://phpthumb.sourceforge.net/
+
+!!!Info Beispielcode
+    Beispiel und Beschreibung auf der Library Seite
+
+[^Top](#PHP)
+
+## Fake Daten erzeugen
+
+!!!warning Link zur PHP Library FAKER
+    https://github.com/fzaninotto/Faker
+
+!!!Info Beispielcode
+    Beispiel und Beschreibung auf der Library Seite
+
+[^Top](#PHP)
+
+## einfache Datenbank Anbindung
+
+Bei Dieser Library ist es einfach in Datenbanken zu schreiben oder von denen zu lesen.
+
+!!!warning Link zur PHP Library "PHP Advanced Database Class"
+    http://slaout.linux62.org/php/index.html
+
+!!!Info Beispielcode
+    Beispiel und Beschreibung auf der Library Seite
+
+[^Top](#PHP)

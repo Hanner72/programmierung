@@ -8,7 +8,7 @@
 
 [Komplexe Select Abfragen](https://www.php-einfach.de/mysql-tutorial/komplexere-datenabfrage/)
 
-[Datenbank Backup per PHP](https://www.php-einfach.de/experte/php-sicherheit/daten-sicher-speichern/datenbankbackup-per-php/)
+[Datenbank Backup per PHPq](https://www.php-einfach.de/experte/php-sicherheit/daten-sicher-speichern/datenbankbackup-per-php/)
 
 # Verbindung aufbauen
 

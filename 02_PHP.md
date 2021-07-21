@@ -108,6 +108,38 @@ $extra = 'index.php#admins';
 header("Location: http://$host$uri/$extra");
 ```
 
+# AUTOMATION
+
+## Daten in Seiten OHNE reload nachladen (PHP, jquery)
+
+HTML Datei mit jquery CDN und JavaScript:
+```html
+    <html>
+        <head>
+            <script src="http://code.jquery.com/jquery-2.1.3.js" type="text/javascript"></script>
+            <script>
+                $(document).ready(function() {
+                    $("#refresh").load("db_laden.php"); // ID refresh
+                    var refreshId = setInterval(function() {
+                        $("#refresh").load("db_laden.php"); // ID refresh
+                    }, 7000); // Zeit in Millisekunden
+                    });
+            </script>
+        </head>
+        <body>
+            <div id="refresh"></div> <!-- ID refresh -->
+        </body>
+    </html>
+```
+
+PHP Datei die in das Script geladen wird und mit der die Daten z.B. aus einer Datenbank geholt werden:
+```php
+<?php
+echo "Inhalt";
+?>
+```
+
+
 # DATEN ÜBERTRAGEN
 
 ## Prüfen ob $_GET oder $_POST gesetzt wurde

@@ -118,7 +118,7 @@ $statement->execute(array('id' => 1, 'email_neu' => 'neu@php-einfach.de'));
 
 ## Mehrere Felder aktualisieren
 
-Bisher wurde immer nur ein Feld aktualisieren. Um mehrere Felder zu aktualisieren, könnt ihr entweder mehrere SQL-Anweisungen schreiben, oder alles in eine. Dazu führt ihr im SET-Teil alle Spalten und Werte ein (per Komma getrennt), die ihr aktualisieren wollt.
+Bisher wurde immer nur ein Feld aktualisiert. Um mehrere Felder zu aktualisieren, könnt ihr entweder mehrere SQL-Anweisungen schreiben, oder alles in eine. Dazu führt ihr im SET-Teil alle Spalten und Werte ein (per Komma getrennt), die ihr aktualisieren wollt.
 
 ```php
 $statement = $pdo->prepare("UPDATE users SET vorname = :vorname_neu, email = :email_neu, nachname = :nachname_neu WHERE id = :id");
